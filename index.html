@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Calculator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #fffebd;
+    }
+    .calculator {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #58cedb;
+      font-family: century gothic;
+    }
+    .calculator h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #fff;
+    }
+    #results {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+
+  <br> <br>
+  <div class="container">
+    <div class="calculator">
+      <h2>JavaScript Calculator</h2>
+      <p>This page demonstrates basic JavaScript calculations.</p>
+
+      <div class="input-group">
+        <label for="num1">Enter first number (a):</label>
+        <input type="number" class="form-control" id="num1" placeholder="Enter a value for a">
+      </div>
+      <div class="input-group">
+        <label for="num2">Enter second number (b):</label>
+        <input type="number" class="form-control" id="num2" placeholder="Enter a value for b">
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-success" onclick="calculate()">Calculate</button>
+        <button class="btn btn-secondary" onclick="clearFields()">Clear</button>
+      </div>
+
+      <div id="results" class="mt-4"></div>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      let num1 = parseInt(document.getElementById('num1').value);
+      let num2 = parseInt(document.getElementById('num2').value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById('results').innerHTML = '<p class="text-danger">Please enter valid numbers.</p>';
+        return;
+      }
+
+      let product = num1 * num2;
+      let remainder = num1 % num2;
+      let power = Math.pow(num1, num2);
+      let isEqual = (num1 === num2);
+
+      document.getElementById('results').innerHTML = `
+        <h5>Results:</h5>
+        <p>Product (a * b): ${product}</p>
+        <p>Remainder (a % b): ${remainder}</p>
+        <p>Power (a ^ b): ${power}</p>
+        <p>Are they equal (a === b): ${isEqual}</p>
+      `;
+    }
+
+    function clearFields() {
+      document.getElementById('num1').value = '';
+      document.getElementById('num2').value = '';
+      document.getElementById('results').innerHTML = '';
+    }
+  </script>
+
+  <footer class="text-center mt-4">
+    <p>For more information, visit <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">MDN Web Docs</a>.</p>
+  </footer>
+</body>
+</html>
